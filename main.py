@@ -14,7 +14,7 @@ root.title("PDF Combinador")
 # root.iconbitmap(r"C:\Users\vctr2\Desktop\python\proyectos\pdf_merge\icono3.ico") 
 root.iconbitmap("icono3.ico") 
 root.resizable(False, False)
-root.geometry("260x160")
+root.geometry("260x300")
 
 frame = Frame(root, bd=10) # el marco se introduce dentro de la raíz 
 frame.pack()  #el marco de empaqueta o se distribuye dentro de la raíz 
@@ -34,6 +34,7 @@ def obtener_ruta_portada():
     # print("Dirección portada: {0}".format(dir_portada))
     # print("Lista portada: {0}".format(lista_portada))
     messagebox.showinfo(title="PDF Combinador", message="Se ha seleccionado la ruta del archivo portada")
+
 
 def obtener_ruta_bases():
     global lista_bases
@@ -57,7 +58,7 @@ def generar_combinaciones():
 
     # comprueba que las rutas no estén vacías
     if dir_portada == "" or dir_destino == "" or dir_bases == "":
-        messagebox.showerror(title="PDF Combinador", message="Ha ocurrido un error. Alguna de las rutas está vacía")
+        messagebox.showerror(title="PDF Combinador", message="Ha ocurrido un error. Alguna de las rutas no se ha seleccionado")
     else: 
 
         i = 1
@@ -78,36 +79,38 @@ def generar_combinaciones():
             messagebox.showerror(title="PDF Combinador", message="Ha ocurrido un error en el ciclo con la instancia merger.")
         else: 
             messagebox.showinfo("PDF Combinador", message="Combinación exitosa")
-        
+
+# ***********************************************
+# v = StringVar()
+# Label(master, textvariable=v).pack()
+
+# v.set("New Text!")
 
 
 # label portada
 label_portada = Label(frame, text="Carpeta de archivo de portada", justify="left")
 label_portada.grid(column=0, row=0, sticky="NW", pady=10)
-# label bases
-label_bases =  Label(frame, text="Carpeta de archivos de bases", justify="left")
-label_bases.grid(column=0, row=1, sticky="NW")
 # boton portada
 button_portada = Button(frame, text="Seleccionar", command=obtener_ruta_portada)
 button_portada.grid(column=1, row=0)
 
 
-
+# label bases
+label_bases =  Label(frame, text="Carpeta de archivos de bases", justify="left")
+label_bases.grid(column=0, row=1, sticky="NW")
 # boton bases
 button_bases = Button(frame, text="Seleccionar", command=obtener_ruta_bases)
 button_bases.grid(column=1, row=1)
-
-
 
 # sepatador (siempre se pone dentro del root)
 #separador = Separator(root, orient="horizontal").pack(fill='x')
 
 # label destino
 label_destino = Label(frame, text="Carpeta destino", justify="left")
-label_destino.grid(column=0, row=3, sticky="NW", pady=10)
+label_destino.grid(column=0, row=2, sticky="NW", pady=10)
 # boton destino
 boton_destino = Button(frame, text="Seleccionar", command=obtener_ruta_destino)
-boton_destino.grid(column=1, row=3)
+boton_destino.grid(column=1, row=2)
 # boton generar
 boton_generar = Button(frame, text="Generar combinación", justify='center', command=generar_combinaciones)
 boton_generar.grid(columnspan=2, sticky="EW")
