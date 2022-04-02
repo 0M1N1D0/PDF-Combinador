@@ -1,9 +1,9 @@
 
-from tkinter import messagebox
 from PyPDF2 import PdfFileMerger, PdfFileReader
-import os 
 from tkinter import *
 from tkinter import filedialog
+from tkinter import messagebox
+import os 
 
 
 
@@ -14,17 +14,23 @@ root.title("PDF Combinador")
 # root.iconbitmap(r"C:\Users\vctr2\Desktop\python\proyectos\pdf_merge\icono3.ico") 
 root.iconbitmap("icono3.ico") 
 root.resizable(False, False)
-root.geometry("260x300")
+root.geometry("260x165")
 
 frame = Frame(root, bd=10) # el marco se introduce dentro de la raíz 
 frame.pack()  #el marco de empaqueta o se distribuye dentro de la raíz 
 frame.config(width=480, height=320) # se establece el tamaño de la ventana en pixeles
 
-lista_portada = []
+lista_portada = [] 
 lista_bases = []
 dir_portada = ""
 dir_bases = ""
 dir_destino = ""
+# ruta_port = StringVar()
+
+
+# **********************************************
+# FUNCIONES
+# **********************************************
 
 def obtener_ruta_portada():
     global lista_portada
@@ -87,13 +93,16 @@ def generar_combinaciones():
 # v.set("New Text!")
 
 
+# **********************************************
+# GUI
+# **********************************************
+
 # label portada
 label_portada = Label(frame, text="Carpeta de archivo de portada", justify="left")
 label_portada.grid(column=0, row=0, sticky="NW", pady=10)
 # boton portada
 button_portada = Button(frame, text="Seleccionar", command=obtener_ruta_portada)
 button_portada.grid(column=1, row=0)
-
 
 # label bases
 label_bases =  Label(frame, text="Carpeta de archivos de bases", justify="left")
